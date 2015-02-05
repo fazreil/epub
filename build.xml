@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<project name="epub builder" basedir=".">
+  <property name="title">title</property>
+
+  <echo>zipping mimetype with 0 compression</echo>
+  <zip destfile="./${title}.epub.zip" 
+    basedir="book"     
+    level="0"
+    includes="mimetype">
+  </zip>
+
+  <echo>zipping the rest with max compression</echo>
+  <zip destfile="./${title}.epub.zip" 
+    basedir="book" 
+    level="9" 
+    includes="**/*"
+    excludes="mimetype">
+  </zip>
+
+  <move file="${title}.epub.zip" tofile="${title}.epub"/>
+  
+</project>
