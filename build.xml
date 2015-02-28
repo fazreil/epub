@@ -2,19 +2,20 @@
 <project name="epub builder" basedir=".">
   <property name="title">title</property>
 
-  <echo>zipping mimetype with 0 compression</echo>
-  <zip destfile="./${title}.epub.zip" 
-    basedir="book"     
-    level="0"
-    includes="mimetype">
-  </zip>
-
-  <echo>zipping the rest with max compression</echo>
+  <echo>zipping the mimetype with 0 compression</echo>
   <zip destfile="./${title}.epub.zip" 
     basedir="book" 
-    level="9" 
-    includes="**/*"
-    excludes="mimetype">
+    level="0"
+    duplicate="preserve"
+    compress="false" 
+    includes="mimetype">
+  </zip>
+  <zip destfile="./${title}.epub.zip" 
+    basedir="book" 
+    level="9"
+    duplicate="preserve"
+    compress="true" 
+    includes="**/*">
   </zip>
 
   <move file="${title}.epub.zip" tofile="${title}.epub"/>

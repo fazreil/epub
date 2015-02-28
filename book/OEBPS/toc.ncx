@@ -15,13 +15,13 @@
 			<navLabel>
 				<text>Hosting</text>
 			</navLabel>
-			<content src="Text/build_website.html#step1"/>
+			<content src="Text/build_website.xhtml#step1"/>
 		</navPoint>
 		<navPoint id="a2" playOrder="1">
 			<navLabel>
 				<text>Do You Need a Domain Name?</text>
 			</navLabel>
-			<content src="Text/build_website.html#step2"/>
+			<content src="Text/build_website.xhtml#step2"/>
 		</navPoint>
 	</navMap>
 </ncx>
