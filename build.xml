@@ -10,25 +10,24 @@
         Torkild U. Resheim - initial API and implementation
  -->
 
-<project name="org.eclipse.mylyn.docs.epub.ui.docs" default="plugin-book">
+<project name="EPUB" default="plugin-book">
 	
-	<!-- Location of Mylyn Docs -->
-	<property name="mylyn-docs" location="${basedir}/../../org.eclipse.mylyn.docs"/>
+	<property name="book.name" value="book1" />	
 
-	<!-- Location of the EPUB source content -->
-	<property name="srcdir" location="${mylyn-docs}/org.eclipse.mylyn.docs.epub.help/docs" />
+	<property name="srcdir" location="${basedir}/content"/>
+	<property name="picdir" location="${basedir}/images"/>
 	
 	<!-- Location of EPUB related files -->
 	<property name="bookdir" location="${basedir}" />
 	
 	<!-- Location of the finished EPUB -->
-	<property name="epubfile" location="Building EPUBs.epub" />
+	<property name="epubfile" location="${book.name}.epub" />
 
 
 	<!-- Load the EPUB task from the library -->
 	<target name="setup-lib">
 		<path id="lib-classpath">
-			<fileset dir="${basedir}/../lib/" includes="*.jar"/>
+			<fileset dir="${basedir}/lib/" includes="*.jar"/>
 		</path>
 		<taskdef resource="org/eclipse/mylyn/docs/epub/ant/tasks.properties" classpathref="lib-classpath"/>
 		<taskdef resource="org/eclipse/mylyn/wikitext/core/ant/tasks.properties" classpathref="lib-classpath"/>
@@ -63,31 +62,23 @@
 		
 		<epub identifierId="uuid" file="${epubfile}" workingfolder="${basedir}/build">
 			<language code="en" />
-			<identifier id="uuid" scheme="UUID">70ce7c20-8f9e-11e0-91e4-0800200c9a66</identifier>
-			<title>Building EPUBs with Eclipse</title>
-			<subject>Computing, Eclipse, Mylyn, EPUB</subject>
-			<publisher>Eclipse.Org</publisher>
-			<creator name="Torkild Ulvøy Resheim" fileAs="Resheim, Torkild Ulvøy" role="aut" />
-			<rights>Copyright (c) 2011, 2012 Torkild Ulvøy Resheim. Licensed under the Eclipse Public License version 1.0</rights>
-			<type>Technical article.</type>
-			<cover image="${basedir}/cover.jpg">Cover page</cover>
-			<item file="${basedir}/title-page.html" />
-			<item file="${basedir}/copyright.html" />
-			<item file="${srcdir}/introduction.html" />
-			<item file="${srcdir}/epub-format.html" />
-			<item file="${srcdir}/generate-ant.html" />
-			<item file="${srcdir}/generate-epub.html" />
-			<item file="${srcdir}/epub-ant-task.html" />
-			<item file="${srcdir}/examples.html" />
-			<item file="${basedir}/style.css" type="text/css" spine="false" />
-			<reference href="title-page.html" type="title-page" title="Building EPUBs with Eclipse" />
-			<reference href="introduction.html" type="preface" title="Introduction" />
-			<reference href="copyright.html" type="copyright-page" title="Copyright" />
+			<identifier id="uuid" scheme="UUID">70ce7c20-8f9e-11e0-91e4-0400200c9a66</identifier>
+			<title>${book.name}</title>
+			<subject>Some random subject</subject>
+			<publisher>Fazreil University of Computer Knowledge</publisher>
+			<creator name="Fazreil Amreen" fileAs="Amreen, Fazreil" role="aut" />
+			<rights>Copyright (c) 2016 Fazreil Amreen. Licensed under the Creative Commons</rights>
+			<type>Computer Knowledge.</type>
+			<!--
+			<cover image="${picdir}/picture001.jpg">Cover page</cover>
+			<item file="${srcdir}/001.html" /> 
+			-->
 			<toc generate="true" />
 			<fileset dir="${srcdir}">
 				<include name="*.gif" />
 				<include name="*.png" />
 				<include name="*.jpg" />
+				<include name="*.mp4" />
 			</fileset>
 			<fileset dir="${basedir}">
 				<include name="*.ttf" />
