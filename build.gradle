@@ -4,6 +4,15 @@
  * This is a general purpose Gradle build.
  * Learn more about Gradle by exploring our samples at https://docs.gradle.org/6.7.1/samples
  */
- plugins {
-   id "org.asciidoctor.jvm.epub" version "3.3.2"
- }
+
+task createEpub(type: Zip){
+  from 'book/'
+  include '**/*'
+  archiveFileName = 'book.epub'
+  destinationDirectory = file('build')
+  entryCompression = ZipEntryCompression.STORED
+}
+
+task clean(type: Delete){
+  delete "build"
+}
