@@ -22,7 +22,7 @@ jobs:
         uses: gradle/gradle-build-action@v2.0-beta.1
         with:
           # Path to the root directory of the build
-          build-root-directory: project
+          build-root-directory: .
           # Gradle command line arguments, see gradle --help
           arguments: 'createEpub'
 
